@@ -48,9 +48,9 @@ class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"18, 18, 0"})
-    void nextRadioStationConstructor(int currentRadioStation, int maxRadioStation, int expected) {
-        Radio radio = new Radio(maxRadioStation);
+    @CsvSource(value = {"18, 18, 0, 1"})
+    void nextRadioStationConstructor(int currentRadioStation, int maxRadioStation, int expected, int currentVolume) {
+        Radio radio = new Radio(currentRadioStation, currentVolume, maxRadioStation);
         radio.setRadioStationNumber(currentRadioStation);
         radio.nextRadioStationNumber();
 
