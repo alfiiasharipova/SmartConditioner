@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @ParameterizedTest
-    @CsvSource(value = {"0, 1", "9, 0"})
+    @CsvSource(value = {"0, 1", "10, 0"})
     void nextRadioStationNumber(int currentRadioStation, int expected) {
         Radio radio = new Radio();
         radio.setRadioStationNumber(currentRadioStation);
@@ -18,7 +18,7 @@ class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0, 9", "9, 8"})
+    @CsvSource(value = {"0, 10", "9, 8"})
     void prevRadioStationNumber(int currentRadioStation, int expected) {
         Radio radio = new Radio();
         radio.setRadioStationNumber(currentRadioStation);
@@ -28,7 +28,7 @@ class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"10, 10", "0, 1"})
+    @CsvSource(value = {"100, 100", "0, 1"})
     void increaseVolume(int currentVolume, int expected) {
         Radio radio = new Radio();
         radio.setCurrentVolume(currentVolume);
@@ -38,12 +38,22 @@ class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"10, 9", "0, 0"})
+    @CsvSource(value = {"100, 99", "0, 0"})
     void decreaseVolume(int currentVolume, int expected) {
         Radio radio = new Radio();
         radio.setCurrentVolume(currentVolume);
         radio.decreaseVolume();
 
         assertEquals(expected, radio.getCurrentVolume());
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"18, 18, 0"})
+    void nextRadioStationConstructor(int currentRadioStation, int maxRadioStation, int expected) {
+        Radio radio = new Radio(maxRadioStation);
+        radio.setRadioStationNumber(currentRadioStation);
+        radio.nextRadioStationNumber();
+
+        assertEquals(expected, radio.getRadioStationNumber());
     }
 }
