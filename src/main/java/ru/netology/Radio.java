@@ -38,7 +38,7 @@ public class Radio {
     }
 
     public void nextRadioStationNumber() {
-        this.radioStationNumber = (this.radioStationNumber == maxRadioStation) ? 0 : this.radioStationNumber + 1;
+        this.radioStationNumber = (this.radioStationNumber == maxRadioStation) ? minRadioStation : this.radioStationNumber + 1;
     }
 
     public void prevRadioStationNumber() {
